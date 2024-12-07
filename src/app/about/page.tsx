@@ -9,7 +9,7 @@ export default function AboutPage() {
         </div>
       </header>
       <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-        <ScrollSection imageSrc="/placeholder.svg?height=300&width=500" imageAlt="Misiunea noastră">
+        <ScrollSection imageSrc="/assets/OurMission.png" imageAlt="Misiunea noastră">
           <section>
             <h2 className="text-2xl font-semibold mb-4">Misiunea Noastră</h2>
             <p className="text-gray-700">
