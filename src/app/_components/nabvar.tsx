@@ -32,8 +32,8 @@ export default function Navbar() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             <div className="flex items-center">
-              <Link href="/" className="text-decoration-none text-xl font-bold">
-                Logo
+              <Link href="/" className={`text-xl font-bold text-decoration-none ${isScrolled ? "text-black" : "text-white"}`}>
+                My Medical
               </Link>
             </div>
             <div className="hidden md:block">
@@ -59,8 +59,9 @@ export default function Navbar() {
                   About
                 </Link>
                 <Link
-                  href="/services"
-                  className={`text-decoration-none rounded-md px-3 py-2 text-sm font-medium ${
+                  href="/servicii"
+                  className={`rounded-md px-3 py-2 text-sm font-medium text-decoration-none ${
+
                     isScrolled
                       ? "text-gray-800 hover:bg-gray-200"
                       : "text-white hover:bg-white/10"
