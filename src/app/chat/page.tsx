@@ -15,11 +15,11 @@ export default function Chat() {
     return (
         <div>
             <div>
-                {chat.map((msg, index) => (
+                {/* {chat.map((msg, index) => (
                     <div key={index} className={msg.sender === "user" ? "user" : "bot"}>
                         {msg.content}
                     </div>
-                ))}
+                ))} */}
             </div>
             <input
                 value={message}

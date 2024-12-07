@@ -2,10 +2,14 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { auth } from "~/server/auth";
+import { useSession } from "next-auth/react";
+import { buttonVariants } from "~/components/ui/button";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
 
+  const { data: session } = useSession();
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 10) {
@@ -21,6 +25,23 @@ export default function Navbar() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+  function NavLogin({ session }: any) {
+    if (session) {
+      return <></>;
+    }
+    return (
+      <Link
+        href="/api/auth/signin"
+        className={`text-decoration-none rounded-md px-3 py-2 text-sm font-medium ${
+          isScrolled
+            ? "text-gray-800 hover:bg-gray-200"
+            : "text-white hover:bg-white/10"
+        }`}
+      >
+        Login
+      </Link>
+    );
+  }
 
   return (
     <>
@@ -32,7 +53,10 @@ export default function Navbar() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             <div className="flex items-center">
-              <Link href="/" className={`text-xl font-bold text-decoration-none ${isScrolled ? "text-black" : "text-white"}`}>
+              <Link
+                href="/"
+                className={`text-decoration-none text-xl font-bold ${isScrolled ? "text-black" : "text-white"}`}
+              >
                 My Medical
               </Link>
             </div>
@@ -40,7 +64,7 @@ export default function Navbar() {
               <div className="ml-10 flex items-baseline space-x-4">
                 <Link
                   href="/"
-                  className={`text-decoration-none rounded-md px-3 py-2 text-sm font-medium ${
+                  className={`${buttonVariants({ variant: "outline" })}}text-decoration-none rounded-md px-3 py-2 text-sm font-medium ${
                     isScrolled
                       ? "text-gray-800 hover:bg-gray-200"
                       : "text-white hover:bg-white/10"
@@ -60,8 +84,7 @@ export default function Navbar() {
                 </Link>
                 <Link
                   href="/servicii"
-                  className={`rounded-md px-3 py-2 text-sm font-medium text-decoration-none ${
-
+                  className={`text-decoration-none rounded-md px-3 py-2 text-sm font-medium ${
                     isScrolled
                       ? "text-gray-800 hover:bg-gray-200"
                       : "text-white hover:bg-white/10"
@@ -79,16 +102,7 @@ export default function Navbar() {
                 >
                   Contact
                 </Link>
-                <Link
-                  href="/api/auth/signin"
-                  className={`text-decoration-none rounded-md px-3 py-2 text-sm font-medium ${
-                    isScrolled
-                      ? "text-gray-800 hover:bg-gray-200"
-                      : "text-white hover:bg-white/10"
-                  }`}
-                >
-                  Login
-                </Link>
+                <NavLogin session={session} />
               </div>
             </div>
           </div>
