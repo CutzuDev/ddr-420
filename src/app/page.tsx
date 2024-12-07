@@ -15,11 +15,9 @@ export default async function Home() {
   return (
     <>
       <HydrateClient>
-        <main className="h-[500vh] bg-red-400">
           <div className="h-screen bg-gradient-to-r from-violet-600 to-indigo-600">
 
           </div>
-        </main>
       </HydrateClient>
     </>
   );
