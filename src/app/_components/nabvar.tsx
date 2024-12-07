@@ -40,7 +40,7 @@ export default function Navbar() {
               <div className="ml-10 flex items-baseline space-x-4">
                 <Link
                   href="/"
-                  className={`rounded-md px-3 py-2 text-sm font-medium text-decoration-none ${
+                  className={`text-decoration-none rounded-md px-3 py-2 text-sm font-medium ${
                     isScrolled
                       ? "text-gray-800 hover:bg-gray-200"
                       : "text-white hover:bg-white/10"
@@ -50,7 +50,7 @@ export default function Navbar() {
                 </Link>
                 <Link
                   href="/about"
-                  className={`rounded-md px-3 py-2 text-sm font-medium text-decoration-none ${
+                  className={`text-decoration-none rounded-md px-3 py-2 text-sm font-medium ${
                     isScrolled
                       ? "text-gray-800 hover:bg-gray-200"
                       : "text-white hover:bg-white/10"
@@ -61,6 +61,7 @@ export default function Navbar() {
                 <Link
                   href="/servicii"
                   className={`rounded-md px-3 py-2 text-sm font-medium text-decoration-none ${
+
                     isScrolled
                       ? "text-gray-800 hover:bg-gray-200"
                       : "text-white hover:bg-white/10"
@@ -70,7 +71,7 @@ export default function Navbar() {
                 </Link>
                 <Link
                   href="/contact"
-                  className={`rounded-md px-3 py-2 text-sm font-medium  text-decoration-none ${
+                  className={`text-decoration-none rounded-md px-3 py-2 text-sm font-medium ${
                     isScrolled
                       ? "text-gray-800 hover:bg-gray-200"
                       : "text-white hover:bg-white/10"
@@ -78,12 +79,14 @@ export default function Navbar() {
                 >
                   Contact
                 </Link>
-                <Link href="/api/auth/signin"
-                      className={`rounded-md px-3 py-2 text-sm font-medium text-decoration-none ${
-                        isScrolled
-                          ? "text-gray-800 hover:bg-gray-200"
-                          : "text-white hover:bg-white/10"
-                      }`} >
+                <Link
+                  href="/api/auth/signin"
+                  className={`text-decoration-none rounded-md px-3 py-2 text-sm font-medium ${
+                    isScrolled
+                      ? "text-gray-800 hover:bg-gray-200"
+                      : "text-white hover:bg-white/10"
+                  }`}
+                >
                   Login
                 </Link>
               </div>

@@ -29,6 +29,8 @@ const AnimatedText = () => {
         <img className='size-72' src='https://st2.depositphotos.com/1810600/5838/v/450/depositphotos_58387439-stock-illustration-abstract-vector-logo.jpg' />
         </motion.div>
       </AnimatePresence></>
+
+
   );
 };
 
