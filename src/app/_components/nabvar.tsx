@@ -1,33 +1,35 @@
-'use client'
+"use client";
 
-import { useState, useEffect } from 'react'
-import Link from 'next/link'
+import { useState, useEffect } from "react";
+import Link from "next/link";
 
 export default function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 10) {
-        setIsScrolled(true)
+        setIsScrolled(true);
       } else {
-        setIsScrolled(false)
+        setIsScrolled(false);
       }
-    }
+    };
 
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [])
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out ${
-      isScrolled ? 'bg-white shadow-md' : 'bg-transparent'
-    }`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+    <nav
+      className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ease-in-out ${
+        isScrolled ? "bg-white shadow-md" : "bg-red-400"
+      }`}
+    >
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
             <Link href="/" className="text-xl font-bold">
               Logo
@@ -35,24 +37,44 @@ export default function Navbar() {
           </div>
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">
-              <Link href="/" className={`px-3 py-2 rounded-md text-sm font-medium ${
-                isScrolled ? 'text-gray-800 hover:bg-gray-200' : 'text-white hover:bg-white/10'
-              }`}>
+              <Link
+                href="/"
+                className={`rounded-md px-3 py-2 text-sm font-medium ${
+                  isScrolled
+                    ? "text-gray-800 hover:bg-gray-200"
+                    : "text-white hover:bg-white/10"
+                }`}
+              >
                 Home
               </Link>
-              <Link href="/about" className={`px-3 py-2 rounded-md text-sm font-medium ${
-                isScrolled ? 'text-gray-800 hover:bg-gray-200' : 'text-white hover:bg-white/10'
-              }`}>
+              <Link
+                href="/about"
+                className={`rounded-md px-3 py-2 text-sm font-medium ${
+                  isScrolled
+                    ? "text-gray-800 hover:bg-gray-200"
+                    : "text-white hover:bg-white/10"
+                }`}
+              >
                 About
               </Link>
-              <Link href="/services" className={`px-3 py-2 rounded-md text-sm font-medium ${
-                isScrolled ? 'text-gray-800 hover:bg-gray-200' : 'text-white hover:bg-white/10'
-              }`}>
+              <Link
+                href="/services"
+                className={`rounded-md px-3 py-2 text-sm font-medium ${
+                  isScrolled
+                    ? "text-gray-800 hover:bg-gray-200"
+                    : "text-white hover:bg-white/10"
+                }`}
+              >
                 Services
               </Link>
-              <Link href="/contact" className={`px-3 py-2 rounded-md text-sm font-medium ${
-                isScrolled ? 'text-gray-800 hover:bg-gray-200' : 'text-white hover:bg-white/10'
-              }`}>
+              <Link
+                href="/contact"
+                className={`rounded-md px-3 py-2 text-sm font-medium ${
+                  isScrolled
+                    ? "text-gray-800 hover:bg-gray-200"
+                    : "text-white hover:bg-white/10"
+                }`}
+              >
                 Contact
               </Link>
             </div>
@@ -60,6 +82,5 @@ export default function Navbar() {
         </div>
       </div>
     </nav>
-  )
+  );
 }
-
