@@ -14,6 +14,18 @@ datasource db {
     url      = env("DATABASE_URL")
 }
 
+model Post {
+    id        Int      @id @default(autoincrement())
+    name      String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    createdBy   User   @relation(fields: [createdById], references: [id])
+    createdById String
+
+    @@index([name])
+}
+
 // Necessary for Next auth
 model Account {
     id                       String  @id @default(cuid())
@@ -50,8 +62,27 @@ model User {
     image         String?
     accounts      Account[]
     sessions      Session[]
+    posts         Post[]
 }
 
+model Chat {
+    id        Int       @id @default(autoincrement())
+    userId    Int
+    medicId   Int?
+    messages  Message[] @relation("ChatMessages") // Relația cu Message
+    createdAt DateTime  @default(now())
+}
+
+model Message {
+    id        Int      @id @default(autoincrement())
+    chatId    Int
+    sender    String   // "user", "medic", "bot"
+    content   String
+    status    String   // "pending", "confirmed"
+    sentAt    DateTime @default(now())
+
+    chat      Chat     @relation("ChatMessages", fields: [chatId], references: [id])
+}
 model VerificationToken {
     identifier String
     token      String   @unique
