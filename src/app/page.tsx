@@ -15,7 +15,7 @@ export default async function Home() {
   return (
     <>
       <HydrateClient>
-        <main className="bg-red-400">aaa</main>
+        <main className="h-[500vh] bg-red-400">aaa</main>
       </HydrateClient>
     </>
   );
