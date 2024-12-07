@@ -1,21 +1,34 @@
+"use client"
 import { motion } from 'framer-motion';
-
+import { AnimatePresence } from "framer-motion";
 const AnimatedText = () => {
   return (
     <>
-    <motion.div
-      initial={{ x: '-100%', opacity: 0 }}
-      animate={{ x: '0%', opacity: 1 }}
+      <AnimatePresence mode="wait">
+    <motion.h1
+      initial={{ x: '-100%', opacity: 0, y:'-100%' }}
+      animate={{ x: '5%', opacity: 1, y:'60%' }}
       transition={{ duration: 1, ease: 'easeOut' }}
       style={{
-        fontSize: '4rem',
+        fontSize: '8rem',
         fontWeight: 'bold',
-        color: '#0070f3',
+        color: '#fff',
         whiteSpace: 'nowrap',
       }}
     >
       My Medical.ai
-    </motion.div></>
+    </motion.h1>
+        <motion.div className='m-2'
+          initial={{ x: '-100%', opacity: 0, y:'-100%' }}
+          animate={{ x: '5%', opacity: 1, y:'45%' }}
+          transition={{ duration: 1, ease: 'easeOut' }}
+          style={{
+
+          }}
+        >
+        <img className='size-72' src='https://st2.depositphotos.com/1810600/5838/v/450/depositphotos_58387439-stock-illustration-abstract-vector-logo.jpg' />
+        </motion.div>
+      </AnimatePresence></>
   );
 };
 
