@@ -4,14 +4,10 @@ import { HydrateClient } from "~/trpc/server";
 import AnimatedText from "~/app/_components/animatedtext";
 export default async function Home() {
   return (
-    <>
+    <div className="min-h-screen">
       <HydrateClient>
-        <div className="h-screen">
-          <div className="max-56 p-3.5 text-white">
-            <AnimatedText />
-          </div>
-        </div>
+        <AnimatedText />
       </HydrateClient>
-    </>
+    </div>
   );
 }

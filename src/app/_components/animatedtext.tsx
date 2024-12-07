@@ -1,34 +1,35 @@
 "use client";
 import { motion } from "framer-motion";
 import { AnimatePresence } from "framer-motion";
+import { v4 as uuidv4 } from "uuid";
+import { Button } from "~/components/ui/button";
 const AnimatedText = () => {
   return (
     <AnimatePresence mode="wait">
-      <motion.h1
-        key={"1"}
-        initial={{ x: "-100%", opacity: 0, y: "-100%" }}
-        animate={{ x: "5%", opacity: 1, y: "60%" }}
-        transition={{ duration: 1, ease: "easeOut" }}
-        style={{
-          fontSize: "8rem",
-          fontWeight: "bold",
-          color: "#fff",
-          whiteSpace: "nowrap",
-        }}
-      >
-        My Medical.ai
-      </motion.h1>
-      <motion.div
-        key={"2"}
-        className="m-2"
-        initial={{ x: "-100%", opacity: 0, y: "-100%" }}
-        animate={{ x: "5%", opacity: 1, y: "45%" }}
-        transition={{ duration: 1, ease: "easeOut" }}
-      >
-        <img
-          className="size-72"
-          src="https://st2.depositphotos.com/1810600/5838/v/450/depositphotos_58387439-stock-illustration-abstract-vector-logo.jpg"
-        />
+      <motion.div className=" text-center flex gap-10 min-h-screen w-full flex-col items-center justify-center bg-color2/25">
+        <motion.h1
+          key={uuidv4()}
+          initial={{ opacity: 0, y: "-150px" }}
+          animate={{ opacity: 1, y: "0px" }}
+          transition={{ duration: 1, ease: "easeInOut", delay: 0.25 }}
+          className="text-4xl font-bold sm:text-6xl md:text-8xl"
+        >
+          Your Health, Our Priority
+        </motion.h1>
+        <motion.p
+          key={uuidv4()}
+          initial={{ opacity: 0, y: "-150px" }}
+          animate={{ opacity: 1, y: "0px" }}
+          transition={{ duration: 1, ease: "easeInOut" }}
+          className="text-xl"
+        >
+          Experience top-quality healthcare with compassionate professionals
+          dedicated to your well-being.
+        </motion.p>
+        <div className="flex items-center justify-center gap-4">
+          <Button>Click</Button>
+          <Button>Click</Button>
+        </div>
       </motion.div>
     </AnimatePresence>
   );

@@ -14,7 +14,11 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
-      colors: {},
+      colors: {
+        color1: "hsl(213,100%,34%)",
+        color2: "hsl(213,100%,45%)",
+        color3: "hsl(213,100%,59%)",
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],
