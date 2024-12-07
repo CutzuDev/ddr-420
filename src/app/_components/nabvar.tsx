@@ -78,6 +78,14 @@ export default function Navbar() {
                 >
                   Contact
                 </Link>
+                <Link href="/api/auth/signin"
+                      className={`rounded-md px-3 py-2 text-sm font-medium ${
+                        isScrolled
+                          ? "text-gray-800 hover:bg-gray-200"
+                          : "text-white hover:bg-white/10"
+                      }`} >
+                  Login
+                </Link>
               </div>
             </div>
           </div>
