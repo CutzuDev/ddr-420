@@ -7,7 +7,9 @@ export default async function Home() {
     <>
       <HydrateClient>
         <div className="h-screen">
-          <div className="p-3.5 max-56 text-white"><AnimatedText/></div>
+          <div className="max-56 p-3.5 text-white">
+            <AnimatedText />
+          </div>
         </div>
       </HydrateClient>
     </>

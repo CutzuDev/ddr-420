@@ -5,6 +5,8 @@ import Link from "next/link";
 import { auth } from "~/server/auth";
 import { useSession } from "next-auth/react";
 import { buttonVariants } from "~/components/ui/button";
+import { cva } from "class-variance-authority";
+import { cn } from "~/lib/utils";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -55,7 +57,7 @@ export default function Navbar() {
             <div className="flex items-center">
               <Link
                 href="/"
-                className={`text-decoration-none text-xl font-bold ${isScrolled ? "text-black" : "text-white"}`}
+                className={`text-decoration-none text-xl font-bold ${isScrolled ? "text-white" : "text-black"}`}
               >
                 My Medical
               </Link>
@@ -64,11 +66,7 @@ export default function Navbar() {
               <div className="ml-10 flex items-baseline space-x-4">
                 <Link
                   href="/"
-                  className={`${buttonVariants({ variant: "outline" })}}text-decoration-none rounded-md px-3 py-2 text-sm font-medium ${
-                    isScrolled
-                      ? "text-gray-800 hover:bg-gray-200"
-                      : "text-white hover:bg-white/10"
-                  }`}
+                  className={cn(buttonVariants({ variant: "secondary" }), "no-underline")}
                 >
                   Home
                 </Link>
