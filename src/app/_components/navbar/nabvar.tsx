@@ -40,10 +40,7 @@ export default function Navbar() {
           onClick={() => {
             signOut();
           }}
-          className={cn(
-            buttonVariants({ variant: "secondary" }),
-            "no-underline",
-          )}
+          className={cn(buttonVariants({ variant: "secondary" }), "no-underline")}
         >
           Sign out
         </Button>
@@ -68,7 +65,7 @@ export default function Navbar() {
           <div className="flex items-center">
             <Link
               href="/"
-              className={`text-decoration-none text-xl font-bold transition-all`}
+              className={`text-decoration-none text-xl font-bold  transition-all`}
             >
               Diagnose. <span className="-ml-1 text-base">AI</span>
             </Link>
