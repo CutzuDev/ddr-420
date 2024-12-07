@@ -13,19 +13,18 @@ export const metadata: Metadata = {
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-
   return (
     <html lang="en" className={`${GeistSans.variable}`}>
       <body className="bg-gradient-to-r from-violet-600 to-indigo-600">
-        <SessionProvider session={}>
-        <TRPCReactProvider>
-          <Navbar />
-          {children}
-          <Footer />
-        </TRPCReactProvider>
+        <SessionProvider>
+          <TRPCReactProvider>
+            <Navbar />
+            {children}
+            <Footer />
+          </TRPCReactProvider>
         </SessionProvider>
       </body>
     </html>
