@@ -1,9 +1,10 @@
 import Link from "next/link";
-import Navbar from "./_components/nabvar";
+import React from 'react';
 import { LatestPost } from "~/app/_components/post";
 import { auth } from "~/server/auth";
 import { api, HydrateClient } from "~/trpc/server";
-
+import {motion} from "framer-motion";
+import AnimatedText from "~/app/_components/animatedtext";
 export default async function Home() {
   // const hello = await api.post.hello({ text: "from tRPC" });
   // const session = await auth();
@@ -15,9 +16,7 @@ export default async function Home() {
   return (
     <>
       <HydrateClient>
-          <div className="h-screen bg-gradient-to-r from-violet-600 to-indigo-600">
-
-          </div>
+        <AnimatedText/>
       </HydrateClient>
     </>
   );
