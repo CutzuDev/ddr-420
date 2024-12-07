@@ -74,15 +74,16 @@ model Chat {
 }
 
 model Message {
-    id        Int      @id @default(autoincrement())
-    chatId    Int
-    sender    String   // "user", "medic", "bot"
-    content   String
-    status    String   // "pending", "confirmed"
-    sentAt    DateTime @default(now())
+    id      Int      @id @default(autoincrement())
+    chatId  Int
+    sender  String // "user", "medic", "bot"
+    content String
+    status  String // "pending", "confirmed"
+    sentAt  DateTime @default(now())
 
-    chat      Chat     @relation("ChatMessages", fields: [chatId], references: [id])
+    chat Chat @relation("ChatMessages", fields: [chatId], references: [id])
 }
+
 model VerificationToken {
     identifier String
     token      String   @unique
