@@ -1,29 +1,10 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
     provider = "prisma-client-js"
 }
 
 datasource db {
     provider = "sqlite"
-    // NOTE: When using mysql or sqlserver, uncomment the @db.Text annotations in model Account below
-    // Further reading:
-    // https://next-auth.js.org/adapters/prisma#create-the-prisma-schema
-    // https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference#string
     url      = env("DATABASE_URL")
-}
-
-model Post {
-    id        Int      @id @default(autoincrement())
-    name      String
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
-
-    createdBy   User   @relation(fields: [createdById], references: [id])
-    createdById String
-
-    @@index([name])
 }
 
 // Necessary for Next auth
@@ -55,29 +36,32 @@ model Session {
 }
 
 model User {
-    id            String    @id @default(cuid())
+    id            String       @id @default(cuid())
     name          String?
-    email         String?   @unique
+    email         String?      @unique
     emailVerified DateTime?
     image         String?
     accounts      Account[]
     sessions      Session[]
-    posts         Post[]
+    medicTokens   MedicToken[] @relation("MedicTokens") // Tokens where user is the medic
+    clientTokens  MedicToken[] @relation("ClientTokens") // Tokens where user is the client
 }
 
 model Chat {
-    id        Int       @id @default(autoincrement())
-    userId    Int
-    medicId   Int?
-    messages  Message[] @relation("ChatMessages") // Relația cu Message
-    createdAt DateTime  @default(now())
+    id Int @id @default(autoincrement())
+    
+    medicTokenId String
+    medicToken   MedicToken @relation(fields: [medicTokenId], references: [id])
+    
+    messages     Message[]  @relation("ChatMessages")
+    createdAt    DateTime   @default(now())
 }
 
 model Message {
     id      Int      @id @default(autoincrement())
     chatId  Int
-    sender  String // "user", "medic", "bot"
-    content String
+    sender  String
+    content String // "doc", "bot", "user"
     status  String // "pending", "confirmed"
     sentAt  DateTime @default(now())
 
@@ -90,4 +74,21 @@ model VerificationToken {
     expires    DateTime
 
     @@unique([identifier, token])
+}
+
+model MedicToken {
+    id     String  @id @default(cuid())
+    token  String  @unique
+    isUsed Boolean @default(false)
+
+    // Relation to Medic User
+    medicId String
+    medic   User   @relation("MedicTokens", fields: [medicId], references: [id], onDelete: Cascade)
+
+    // Relation to Client User
+    clientId String?
+    client   User?   @relation("ClientTokens", fields: [clientId], references: [id], onDelete: SetNull)
+
+    // Relation to Chats
+    chats    Chat[]
 }
