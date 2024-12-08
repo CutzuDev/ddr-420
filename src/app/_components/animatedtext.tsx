@@ -27,8 +27,7 @@ const AnimatedText = () => {
           dedicated to your well-being.
         </motion.p>
         <div className="flex items-center justify-center gap-4">
-          <Button>Click</Button>
-          <Button>Click</Button>
+          <Button className="bg-color1 !important">Enroll Now</Button>
         </div>
       </motion.div>
     </AnimatePresence>

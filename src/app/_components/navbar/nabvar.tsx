@@ -1,11 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { signOut, useSession } from "next-auth/react";
 import { Button, buttonVariants } from "~/components/ui/button";
 import { cva } from "class-variance-authority";
 import { cn } from "~/lib/utils";
+import { Stethoscope } from "lucide-react";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);

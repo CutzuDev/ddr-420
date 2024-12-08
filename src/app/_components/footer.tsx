@@ -14,7 +14,7 @@ const Footer: React.FC = () => {
             <i className="fab fa-facebook-f"></i>
           </a>
           <a href="/twitter" className="me-4 text-white">
-            <i className="fab fa-twitter"></i>
+            <i className="fab fa-x"></i>
           </a>
           <a href="/google" className="me-4 text-white">
             <i className="fab fa-google"></i>
@@ -25,9 +25,6 @@ const Footer: React.FC = () => {
           <a href="linkedin" className="me-4 text-white">
             <i className="fab fa-linkedin"></i>
           </a>
-          <a href="/github" className="me-4 text-white">
-            <i className="fab fa-github"></i>
-          </a>
         </div>
       </section>
       <section className="bg-dark mt-o">
@@ -35,29 +32,19 @@ const Footer: React.FC = () => {
           <div className="row pt-4 text-white">
             <div className="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
               <h6 className="text-uppercase fw-bold mb-4">
-                <a href="/">
-                  <img
-                    src="https://atelierulviselor.ro/includes/logo.png"
-                    alt="Logo"
-                    width="50"
-                    height="50"
-                    className="d-inline-block mb-2 ms-4 align-text-top"
-                  />
-                </a>
-
-                <p className="m-0">My Medic.ai</p>
+                <p className="m-0">Diagnose. <span className="-ml-1 text-base">AI</span></p>
               </h6>
               <p></p>
             </div>
             <div className="col-md-2 col-lg-2 col-xl-2 bg-dark mx-auto mb-4">
-              <h6 className="text-uppercase fw-bold mb-4">Legal</h6>
+              <h6 className="text-uppercase fw-bold mb-4">Legal links</h6>
               <p>
-                <a href="/pricing-personal" className="text-reset">
+                <a href="/gdpr-ro" className="text-reset fw-bold text-decoration-none">
                   GDPR
                 </a>
               </p>
               <p>
-                <a href="/pricing-enterprise" className="text-reset">
+                <a href="/terms-of-use" className="text-reset fw-bold text-decoration-none">
                   Terms of use
                 </a>
               </p>
@@ -65,32 +52,31 @@ const Footer: React.FC = () => {
             <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
               <h6 className="text-uppercase fw-bold mb-4">Useful links</h6>
               <p>
-                <a href="/pricing" className="text-reset">
-                  Pricing
+                <a href="/services" className="text-reset fw-bold text-decoration-none">
+                  Services
                 </a>
               </p>
               <p>
-                <a href="#!" className="text-reset">
+                <a href="/about" className="text-reset fw-bold text-decoration-none">
                   About
                 </a>
               </p>
               <p>
-                <a href="#!" className="text-reset">
+                <a href="/contact" className="text-reset fw-bold text-decoration-none">
                   Help
                 </a>
               </p>
             </div>
             <div className="col-md-4 col-lg-3 col-xl-3 mb-md-0 mx-auto mb-4">
               <h6 className="text-uppercase fw-bold mb-4">Contact</h6>
-              <p>
-                <i className="fas fa-home me-3"></i> New York, NY 10012, US
+              <p className="fw-bold">
+                <i className="fas fa-home me-3"></i>  Bucuresti, Calea Victoriei Nr. 12
               </p>
-              <p>
-                <i className="fas fa-envelope me-3"></i>
-                info@spheranote.com
+              <p className="fw-bold">
+                <i className="fas fa-envelope me-3"></i> legal@diagnose.ai
               </p>
-              <p>
-                <i className="fas fa-print me-3"></i> + 01 234 567 89
+              <p className="fw-bold">
+                <i className="fas fa-print me-3"></i> +4071 234 567
               </p>
             </div>
           </div>

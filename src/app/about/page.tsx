@@ -1,73 +1,116 @@
-import { ScrollSection } from '../_components/ScrollSection';
+import Link from "next/link"
+import { Button } from "../_components/ui/button"
+import { Card, CardContent } from "../_components/ui/card"
+import { AnimateOnScroll } from "../_components/animate-on-scroll"
+import { Stethoscope, Users, Award, Microscope, ChevronRight } from 'lucide-react'
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-gray-100">
-      <header className="bg-white shadow">
-        <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl font-bold text-gray-900">Despre Platforma Noastră Medicală</h1>
-        </div>
-      </header>
-      <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-        <ScrollSection imageSrc="/assets/OurMission.png" imageAlt="Misiunea noastră">
-          <section>
-            <h2 className="text-2xl font-semibold mb-4">Misiunea Noastră</h2>
-            <p className="text-gray-700">
-              Platforma noastră medicală își propune să revoluționeze modul în care pacienții și
-              profesioniștii din domeniul medical interacționează și gestionează informațiile de sănătate.
-              Ne străduim să oferim o experiență seamless, sigură și eficientă pentru toți utilizatorii noștri.
-            </p>
+    <div className="flex flex-col min-h-screen">
+      <main className="flex-1">
+        <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-color1">
+          <AnimateOnScroll>
+            <div className="container px-4 md:px-6">
+              <div className="flex flex-col items-center space-y-4 text-center">
+                <div className="space-y-2">
+                  <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl text-white md:text-5xl lg:text-6xl/none">
+                    About Diagnose.AI
+                  </h1>
+                  <p className="mx-auto max-w-[700px] text-white md:text-xl dark:text-gray-400">
+                    Dedicated to providing exceptional healthcare with compassion and expertise.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </AnimateOnScroll>
+        </section>
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-white">
+          <div className="container px-4 md:px-6">
+            <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
+              <AnimateOnScroll className="flex flex-col justify-center space-y-4">
+                <div className="space-y-2">
+                  <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Our Mission</h2>
+                  <p className="max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
+                    At Diagnose.Ai, our mission is to provide high-quality, patient-centered healthcare that improves the health and well-being of our community. We are committed to delivering compassionate care, fostering innovation, and promoting health education.
+                  </p>
+                </div>
+              </AnimateOnScroll>
+              <AnimateOnScroll>
+                <img
+                  alt="MediCare Team"
+                  className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full lg:order-last"
+                  height="550"
+                  src="/assets/Ourteam.png"
+                  width="550"
+                />
+              </AnimateOnScroll>
+            </div>
+          </div>
+        </section>
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-100">
+          <div className="container px-4 md:px-6">
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">Why Choose Us</h2>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              <AnimateOnScroll>
+                <Card>
+                  <CardContent className="p-6 flex flex-col items-center text-center space-y-2">
+                    <Users className="w-12 h-12 text-blue-500" />
+                    <h3 className="text-xl font-bold">Expert Team</h3>
+                    <p>Highly qualified and experienced medical professionals</p>
+                  </CardContent>
+                </Card>
+              </AnimateOnScroll>
+              <AnimateOnScroll>
+                <Card>
+                  <CardContent className="p-6 flex flex-col items-center text-center space-y-2">
+                    <Microscope className="w-12 h-12 text-blue-500" />
+                    <h3 className="text-xl font-bold">Advanced Technology</h3>
+                    <p>State-of-the-art medical equipment and facilities</p>
+                  </CardContent>
+                </Card>
+              </AnimateOnScroll>
+              <AnimateOnScroll>
+                <Card>
+                  <CardContent className="p-6 flex flex-col items-center text-center space-y-2">
+                    <Award className="w-12 h-12 text-blue-500" />
+                    <h3 className="text-xl font-bold">Quality Care</h3>
+                    <p>Committed to the highest standards of patient care</p>
+                  </CardContent>
+                </Card>
+              </AnimateOnScroll>
+              <AnimateOnScroll>
+                <Card>
+                  <CardContent className="p-6 flex flex-col items-center text-center space-y-2">
+                    <Users className="w-12 h-12 text-blue-500" />
+                    <h3 className="text-xl font-bold">Patient-Centered</h3>
+                    <p>Tailored healthcare solutions for individual needs</p>
+                  </CardContent>
+                </Card>
+              </AnimateOnScroll>
+            </div>
+          </div>
+        </section>
+        <AnimateOnScroll>
+          <section className="w-full py-12 md:py-24 lg:py-32 bg-blue-600 text-white">
+            <div className="container px-4 md:px-6">
+              <div className="flex flex-col items-center space-y-4 text-center">
+                <div className="space-y-2">
+                  <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Join Our Team</h2>
+                  <p className="mx-auto max-w-[600px] text-blue-100 md:text-xl">
+                    We're always looking for talented professionals to join our mission of providing exceptional healthcare.
+                  </p>
+                </div>
+                <a href="/contact">
+                <Button className="bg-white text-blue-600 hover:bg-blue-50">
+                  View Careers
+                  <ChevronRight className="ml-2 h-4 w-4" />
+                </Button></a>
+              </div>
+            </div>
           </section>
-        </ScrollSection>
-
-        <ScrollSection imageSrc="/placeholder.svg?height=300&width=500" imageAlt="Serviciile noastre">
-          <section>
-            <h2 className="text-2xl font-semibold mb-4">Serviciile Noastre</h2>
-            <ul className="list-disc list-inside text-gray-700">
-              <li>Programări online pentru consultații</li>
-              <li>Acces securizat la fișe medicale electronice</li>
-              <li>Telemedicină și consultații video</li>
-              <li>Sistem de notificări pentru medicamente și programări</li>
-              <li>Integrare cu dispozitive de monitorizare a sănătății</li>
-            </ul>
-          </section>
-        </ScrollSection>
-
-        <ScrollSection imageSrc="/placeholder.svg?height=300&width=500" imageAlt="Echipa noastră">
-          <section>
-            <h2 className="text-2xl font-semibold mb-4">Echipa Noastră</h2>
-            <p className="text-gray-700">
-              Suntem o echipă dedicată de profesioniști din domeniul medical și IT, cu o vastă experiență
-              în dezvoltarea de soluții inovatoare pentru sănătate. Fiecare membru al echipei noastre este
-              pasionat de îmbunătățirea calității vieții pacienților prin tehnologie avansată.
-            </p>
-          </section>
-        </ScrollSection>
-
-        <ScrollSection imageSrc="/placeholder.svg?height=300&width=500" imageAlt="Tehnologia noastră">
-          <section>
-            <h2 className="text-2xl font-semibold mb-4">Tehnologia Noastră</h2>
-            <p className="text-gray-700">
-              Utilizăm cele mai recente tehnologii pentru a asigura o platformă robustă, scalabilă și
-              securizată. Arhitectura noastră este construită pe principii de microservicii, folosind
-              criptare end-to-end pentru toate datele sensibile și respectând cele mai înalte standarde
-              de securitate și conformitate în domeniul medical.
-            </p>
-          </section>
-        </ScrollSection>
-
-        <ScrollSection imageSrc="/placeholder.svg?height=300&width=500" imageAlt="Contactează-ne">
-          <section>
-            <h2 className="text-2xl font-semibold mb-4">Contactează-ne</h2>
-            <p className="text-gray-700">
-              Suntem aici pentru a răspunde la întrebările tale și pentru a-ți oferi suportul necesar.
-              Nu ezita să ne contactezi la adresa de email support@platforma-medicala.ro sau la numărul
-              de telefon +40 123 456 789.
-            </p>
-          </section>
-        </ScrollSection>
+        </AnimateOnScroll>
       </main>
     </div>
-  );
+  )
 }
 
