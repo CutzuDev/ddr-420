@@ -6,7 +6,15 @@ import { signOut, useSession } from "next-auth/react";
 import { Button, buttonVariants } from "~/components/ui/button";
 import { cva } from "class-variance-authority";
 import { cn } from "~/lib/utils";
-import { Stethoscope } from "lucide-react";
+import { MenuSquare, Stethoscope } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "~/components/ui/dropdown-menu";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -37,17 +45,31 @@ export default function Navbar() {
   function NavLogin({ session }: any) {
     if (session) {
       return (
-        <Button
-          onClick={() => {
-            signOut();
-          }}
-          className={cn(
-            buttonVariants({ variant: "secondary" }),
-            "no-underline",
-          )}
-        >
-          Sign out
-        </Button>
+        <DropdownMenu>
+          <DropdownMenuTrigger>
+            <MenuSquare />
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            <DropdownMenuLabel>Menu</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <Link href={"/dashboard"}>
+              <DropdownMenuItem>Dashboard</DropdownMenuItem>
+            </Link>
+            <DropdownMenuItem>
+              <Button
+                onClick={() => {
+                  signOut();
+                }}
+                className={cn(
+                  buttonVariants({ variant: "destructive" }),
+                  "no-underline",
+                )}
+              >
+                Sign out
+              </Button>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       );
     }
     return (
@@ -75,7 +97,7 @@ export default function Navbar() {
             </Link>
           </div>
           <div className="hidden md:block">
-            <div className="flex items-center justify-center gap-4">
+            <div className="flex items-center justify-center">
               {buttons.map((e, i) => {
                 return (
                   <Link
