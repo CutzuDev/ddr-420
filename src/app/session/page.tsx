@@ -4,26 +4,12 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 export default async function Session() {
-  const data = await prisma.medicToken.findMany({
+  const medikTokenObj = await prisma.medicToken.findUnique({
     where: {
-      medicId: "cm4elui26000010mhzwgmrz2r",
-      isUsed: true,
-      clientId: {
-        not: null,
-      },
-    },
-    include: {
-      client: {
-        select: {
-          id: true,
-          name: true,
-          email: true,
-          image: true,
-        },
-      },
+      id: "cm4f5kfrr00b7gjl7dgahk5io",
     },
   });
-  console.log(data);
+  console.log(medikTokenObj);
 
   return <div></div>;
 }

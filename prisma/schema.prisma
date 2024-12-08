@@ -45,27 +45,29 @@ model User {
     sessions      Session[]
     medicTokens   MedicToken[] @relation("MedicTokens") // Tokens where user is the medic
     clientTokens  MedicToken[] @relation("ClientTokens") // Tokens where user is the client
+    Message       Message[]
 }
 
 model Chat {
-    id Int @id @default(autoincrement())
-    
+    id           String     @id @default(cuid())
     medicTokenId String
-    medicToken   MedicToken @relation(fields: [medicTokenId], references: [id])
-    
+    medicToken   MedicToken @relation(fields: [medicTokenId], references: [id], onDelete: Cascade)
     messages     Message[]  @relation("ChatMessages")
     createdAt    DateTime   @default(now())
 }
 
 model Message {
-    id      Int      @id @default(autoincrement())
-    chatId  Int
-    sender  String
-    content String // "doc", "bot", "user"
-    status  String // "pending", "confirmed"
-    sentAt  DateTime @default(now())
+    id       String   @id @default(cuid())
+    chatId   String
+    senderId String // Changed from 'sender' to 'senderId' to store User ID
+    content  String
+    status   String // "pending", "confirmed"
+    sentAt   DateTime @default(now())
+    role     String?
+    chat     Chat     @relation("ChatMessages", fields: [chatId], references: [id], onDelete: Cascade)
+    sender   User     @relation(fields: [senderId], references: [id]) // Added relation to User
 
-    chat Chat @relation("ChatMessages", fields: [chatId], references: [id])
+    @@index([senderId])
 }
 
 model VerificationToken {
@@ -77,18 +79,12 @@ model VerificationToken {
 }
 
 model MedicToken {
-    id     String  @id @default(cuid())
-    token  String  @unique
-    isUsed Boolean @default(false)
-
-    // Relation to Medic User
-    medicId String
-    medic   User   @relation("MedicTokens", fields: [medicId], references: [id], onDelete: Cascade)
-
-    // Relation to Client User
+    id       String  @id @default(cuid())
+    token    String  @unique
+    isUsed   Boolean @default(false)
+    medicId  String
+    medic    User    @relation("MedicTokens", fields: [medicId], references: [id], onDelete: Cascade)
     clientId String?
     client   User?   @relation("ClientTokens", fields: [clientId], references: [id], onDelete: SetNull)
-
-    // Relation to Chats
     chats    Chat[]
 }
